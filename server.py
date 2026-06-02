@@ -17,6 +17,8 @@ import asyncio
 from typing import Optional, List, Dict, Any
 from enum import Enum
 import httpx
+import certifi, functools
+httpx.AsyncClient = functools.partial(httpx.AsyncClient, verify=certifi.where())
 from pydantic import BaseModel, Field, ConfigDict, field_validator
 from mcp.server.fastmcp import FastMCP
 
